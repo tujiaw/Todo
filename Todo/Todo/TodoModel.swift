@@ -11,7 +11,7 @@ import UIKit
 class TodoModel : NSObject {
     var id: String
     var imageName: String
-    var title: String
+    var title: String!
     var date: NSDate
     
     init(id: String, imageName: String, title: String, date: NSDate) {

@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return g_todos.count
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -46,6 +46,19 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("todoCell") as UITableViewCell
+        var todo = g_todos[indexPath.row] as TodoModel
+        
+        var image = cell.viewWithTag(1) as UIImageView!
+        var title = cell.viewWithTag(2) as UILabel!
+        var date = cell.viewWithTag(3) as UILabel!
+        image.image = UIImage(named: todo.imageName)
+        title.text! = todo.title
+        let locale = NSLocale.currentLocale()
+        let dateFormat = NSDateFormatter.dateFormatFromTemplate("yyy-MM-dd", options: 0, locale: locale)
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateFormat = dateFormat
+        date.text = dateformatter.stringFromDate(todo.date)
+        
         return cell
     }
 }
