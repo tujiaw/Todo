@@ -17,6 +17,14 @@ func dateFromString(dateStr: String) -> NSDate? {
     return date
 }
 
+func stringFromDate(format: String, date: NSDate) -> String {
+    let locale = NSLocale.currentLocale()
+    let dateFormat = NSDateFormatter.dateFormatFromTemplate(format, options: 0, locale: locale)
+    let dateformatter = NSDateFormatter()
+    dateformatter.dateFormat = dateFormat
+    return dateformatter.stringFromDate(date)
+}
+
 class ViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -27,8 +35,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         g_todos = [
             TodoModel(id: "1", imageName: "child-selected", title: "1.去游乐场", date: dateFromString("2014-11-2")!),
             TodoModel(id: "2", imageName: "shopping-cart-selected", title: "2.购物", date: dateFromString("2014-12-22")!),
-            TodoModel(id: "3", imageName: "phone-selected", title: "3.打电话", date: dateFromString("2015-1-2")!),
-            TodoModel(id: "4", imageName: "travel-selected", title: "4.旅游", date: dateFromString("2015-3-14")!)
+            TodoModel(id: "3", imageName: "phone-selected", title: "3.打电话", date: dateFromString("2015/1/2")!),
+            TodoModel(id: "4", imageName: "travel-selected", title: "4.旅游", date: dateFromString("2015/3/14")!)
         ]
     }
 
@@ -53,12 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         var date = cell.viewWithTag(3) as UILabel!
         image.image = UIImage(named: todo.imageName)
         title.text! = todo.title
-        let locale = NSLocale.currentLocale()
-        let dateFormat = NSDateFormatter.dateFormatFromTemplate("yyy-MM-dd", options: 0, locale: locale)
-        let dateformatter = NSDateFormatter()
-        dateformatter.dateFormat = dateFormat
-        date.text = dateformatter.stringFromDate(todo.date)
-        
+        date.text = stringFromDate("yyy-MM-dd", todo.date)
         return cell
     }
 }
