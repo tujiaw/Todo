@@ -38,6 +38,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             TodoModel(id: "3", imageName: "phone-selected", title: "3.打电话", date: dateFromString("2015/1/2")!),
             TodoModel(id: "4", imageName: "travel-selected", title: "4.旅游", date: dateFromString("2015/3/14")!)
         ]
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +72,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             g_todos.removeAtIndex(indexPath.row)
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.setEditing(editing, animated: animated)
     }
     
 }
