@@ -25,7 +25,7 @@ func stringFromDate(format: String, date: NSDate) -> String {
     return dateformatter.stringFromDate(date)
 }
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -64,5 +64,13 @@ class ViewController: UIViewController, UITableViewDataSource {
         date.text = stringFromDate("yyy-MM-dd", todo.date)
         return cell
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            g_todos.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
 }
 
