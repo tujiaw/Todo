@@ -17,7 +17,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" rowHeight="63" id="tBk-2Q-Lkn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="todoCell" rowHeight="63" id="tBk-2Q-Lkn">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tBk-2Q-Lkn" id="BcX-vr-Vuu">
@@ -43,6 +43,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Mxo-C5-xj5" kind="push" identifier="EditTodo" id="tPh-Ap-zKp"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -65,40 +68,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-85" y="111"/>
+            <point key="canvasLocation" x="-1220" y="326"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ILU-MU-8Is">
             <objects>
-                <viewController id="Mxo-C5-xj5" sceneMemberID="viewController">
+                <viewController id="Mxo-C5-xj5" customClass="DetailViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jV7-fD-kZ7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="child" id="z0D-2D-FZA">
-                                <rect key="frame" x="16" y="90" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="child" id="r7O-1h-P21">
-                                <rect key="frame" x="177" y="93" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="child" id="qwm-yu-eJl">
-                                <rect key="frame" x="235" y="93" width="85" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone" id="4dW-g4-crg">
-                                <rect key="frame" x="94" y="90" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="shopping-cart" id="ftB-SO-FI8">
-                                <rect key="frame" x="177" y="90" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="travel" id="Nkb-ik-aRT">
-                                <rect key="frame" x="254" y="90" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo事项" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yjD-Rs-ePK">
                                 <rect key="frame" x="20" y="183" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -120,24 +99,75 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xp3-mM-LCW">
-                                <rect key="frame" x="137" y="448" width="46" height="30"/>
+                                <rect key="frame" x="145" y="445" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="确定">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="okTapped:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="FtD-kj-733"/>
+                                </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="child" id="1Qe-Ws-Aqg">
-                                <rect key="frame" x="94" y="93" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5eD-ES-DKc">
+                                <rect key="frame" x="16" y="93" width="67" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="child">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="child-selected"/>
+                                <connections>
+                                    <action selector="childClicked:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="fcq-fV-T0E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VxU-Wu-UKQ">
+                                <rect key="frame" x="91" y="93" width="67" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="phone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="phone-selected"/>
+                                <connections>
+                                    <action selector="phoneClicked:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="0Y8-iK-JQ2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="13P-pV-myF">
+                                <rect key="frame" x="166" y="93" width="67" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="shopping-cart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="shopping-cart-selected"/>
+                                <connections>
+                                    <action selector="shoppingClicked:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="WMD-C2-R75"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ifj-JE-e6y">
+                                <rect key="frame" x="241" y="93" width="67" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="travel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="travel-selected"/>
+                                <connections>
+                                    <action selector="travelClicked:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="yb8-FY-OYM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="6ma-bj-K84"/>
+                    <connections>
+                        <outlet property="childButton" destination="5eD-ES-DKc" id="RiM-WK-agn"/>
+                        <outlet property="phoneButton" destination="VxU-Wu-UKQ" id="FMC-bK-vKn"/>
+                        <outlet property="shoppingButton" destination="13P-pV-myF" id="Wh1-Al-QBX"/>
+                        <outlet property="todoDate" destination="VHs-qT-fIu" id="Vdz-BF-a95"/>
+                        <outlet property="todoItem" destination="acG-hU-iTG" id="Fwq-NQ-6TH"/>
+                        <outlet property="travelButton" destination="Ifj-JE-e6y" id="jEV-cJ-a3H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6X-hm-Uff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="161" y="72"/>
+            <point key="canvasLocation" x="-1199" y="160"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="woc-yl-wyO">
@@ -155,19 +185,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="var-El-WeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-122" y="151"/>
+            <point key="canvasLocation" x="-1253" y="390"/>
         </scene>
     </scenes>
     <resources>
         <image name="child" width="50" height="50"/>
         <image name="child-selected" width="50" height="50"/>
         <image name="phone" width="50" height="50"/>
+        <image name="phone-selected" width="50" height="50"/>
         <image name="shopping-cart" width="50" height="50"/>
+        <image name="shopping-cart-selected" width="50" height="50"/>
         <image name="travel" width="50" height="50"/>
+        <image name="travel-selected" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="tPh-Ap-zKp"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D1292FA1AD2388200ABB327 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1292F91AD2388200ABB327 /* DetailViewController.swift */; };
 		9DBA7A9B1AADE08A006672E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBA7A9A1AADE08A006672E8 /* AppDelegate.swift */; };
 		9DBA7A9D1AADE08A006672E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBA7A9C1AADE08A006672E8 /* ViewController.swift */; };
 		9DBA7AA01AADE08A006672E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DBA7A9E1AADE08A006672E8 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D1292F91AD2388200ABB327 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9DBA7A951AADE08A006672E8 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DBA7A991AADE08A006672E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DBA7A9A1AADE08A006672E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				9DBA7AA31AADE08A006672E8 /* LaunchScreen.xib */,
 				9DBA7A981AADE08A006672E8 /* Supporting Files */,
 				9DBA7ABA1AADF242006672E8 /* TodoModel.swift */,
+				9D1292F91AD2388200ABB327 /* DetailViewController.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				9DBA7ABB1AADF242006672E8 /* TodoModel.swift in Sources */,
 				9DBA7A9D1AADE08A006672E8 /* ViewController.swift in Sources */,
 				9DBA7A9B1AADE08A006672E8 /* AppDelegate.swift in Sources */,
+				9D1292FA1AD2388200ABB327 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				9DBA7AB61AADE08A006672E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DBA7AB71AADE08A006672E8 /* Build configuration list for PBXNativeTarget "TodoTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				9DBA7AB91AADE08A006672E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
