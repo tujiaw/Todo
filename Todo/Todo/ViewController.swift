@@ -88,5 +88,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
+    
+    @IBAction func close(segue: UIStoryboardSegue) {
+        println("close")
+        tableView.reloadData()
+    }
 }
 
