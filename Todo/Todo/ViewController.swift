@@ -79,5 +79,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.setEditing(editing, animated: animated)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditTodo" {
+            var vc = segue.destinationViewController as DetailViewController
+            var indexPath = tableView.indexPathForSelectedRow()
+            if let index = indexPath {
+                vc.todo = g_todos[index.row]
+            }
+        }
+    }
 }
 

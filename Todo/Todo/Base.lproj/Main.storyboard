@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1220" y="326"/>
+            <point key="canvasLocation" x="-1721" y="100"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ILU-MU-8Is">
@@ -105,7 +105,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="okTapped:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="FtD-kj-733"/>
+                                    <action selector="okTapped:" destination="Mxo-C5-xj5" eventType="touchUpInside" id="OP1-vF-99Z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5eD-ES-DKc">
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6X-hm-Uff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1199" y="160"/>
+            <point key="canvasLocation" x="-1380" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="woc-yl-wyO">
@@ -185,7 +185,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="var-El-WeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1253" y="390"/>
+            <point key="canvasLocation" x="-1249" y="82"/>
         </scene>
     </scenes>
     <resources>
