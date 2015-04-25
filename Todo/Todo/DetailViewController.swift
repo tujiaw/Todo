@@ -59,19 +59,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func childClicked(sender: AnyObject) {
-        mutexSelectedButton(sender as UIButton)
+        mutexSelectedButton(sender as! UIButton)
     }
     
     @IBAction func phoneClicked(sender: AnyObject) {
-        mutexSelectedButton(sender as UIButton)
+        mutexSelectedButton(sender as! UIButton)
     }
     
     @IBAction func shoppingClicked(sender: AnyObject) {
-        mutexSelectedButton(sender as UIButton)
+        mutexSelectedButton(sender as! UIButton)
     }
     
     @IBAction func travelClicked(sender: AnyObject) {
-        mutexSelectedButton(sender as UIButton)
+        mutexSelectedButton(sender as! UIButton)
     }
     
     @IBAction func okTapped(sender: AnyObject) {
@@ -102,7 +102,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         todoItem.resignFirstResponder()
     }
 }

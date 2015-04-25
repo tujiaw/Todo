@@ -9,6 +9,7 @@
 import UIKit
 
 var g_todos: [TodoModel] = []
+var g_filter: [TodoModel] = []
 
 func dateFromString(dateStr: String) -> NSDate? {
     let dateFormatter = NSDateFormatter()
@@ -25,7 +26,7 @@ func stringFromDate(format: String, date: NSDate) -> String {
     return dateformatter.stringFromDate(date)
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -40,6 +41,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         ]
         
         navigationItem.leftBarButtonItem = editButtonItem()
+        var newOffset = tableView.contentOffset
+        newOffset.y += searchDisplayController!.searchBar.frame.size.height
+        tableView.contentOffset = newOffset
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,19 +52,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return g_todos.count
+        if tableView == searchDisplayController?.searchResultsTableView {
+            return g_filter.count
+        } else {
+            return g_todos.count
+        }
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("todoCell") as UITableViewCell
-        var todo = g_todos[indexPath.row] as TodoModel
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("todoCell") as! UITableViewCell
         
-        var image = cell.viewWithTag(1) as UIImageView!
-        var title = cell.viewWithTag(2) as UILabel!
-        var date = cell.viewWithTag(3) as UILabel!
+        var todo: TodoModel
+        if tableView == searchDisplayController?.searchResultsTableView {
+            todo = g_filter[indexPath.row] as TodoModel
+        } else {
+            todo = g_todos[indexPath.row] as TodoModel
+        }
+        
+        var image = cell.viewWithTag(1) as! UIImageView!
+        var title = cell.viewWithTag(2) as! UILabel!
+        var date = cell.viewWithTag(3) as! UILabel!
         image.image = UIImage(named: todo.imageName)
         title.text! = todo.title
         date.text = stringFromDate("yyy-MM-dd", todo.date)
@@ -81,7 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditTodo" {
-            var vc = segue.destinationViewController as DetailViewController
+            var vc = segue.destinationViewController as! DetailViewController
             var indexPath = tableView.indexPathForSelectedRow()
             if let index = indexPath {
                 vc.todo = g_todos[index.row]
@@ -92,6 +106,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func close(segue: UIStoryboardSegue) {
         println("close")
         tableView.reloadData()
+    }
+    
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return editing
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let src = g_todos.removeAtIndex(sourceIndexPath.row)
+        g_todos.insert(src, atIndex: destinationIndexPath.row)
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        g_filter = g_todos.filter() {$0.title.rangeOfString(searchString) != nil}
+        return true
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
     }
 }
 
